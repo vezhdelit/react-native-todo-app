@@ -28,7 +28,7 @@ const TodoList = () => {
       const todoRef = query(
         collection(FIRESTORE_DB, "todos"),
         where("userId", "==", user.uid),
-        orderBy("createdAt", "asc") // Sort by timestamp in ascending order
+        orderBy("createdAt", "desc") // Sort by timestamp in ascending order
       );
 
       const subscriber = onSnapshot(todoRef, {
