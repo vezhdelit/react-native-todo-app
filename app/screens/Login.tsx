@@ -3,55 +3,56 @@ import {
   Text,
   TextInput,
   ActivityIndicator,
-  Button,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
 import {
+  User,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
 } from "firebase/auth";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState<Boolean>(false);
-  const auth = FIREBASE_AUTH;
+  const [isLoadingSubmit, setIsLoadingSubmit] = useState<Boolean>(false);
+  const [isLoadingAuth, setIsLoadingAuth] = useState<Boolean>(true);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    setIsLoadingAuth(true);
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      setUser(user);
+      setIsLoadingAuth(false);
+    });
+  }, []);
 
   const signIn = async () => {
-    setIsLoading(true);
+    setIsLoadingSubmit(true);
 
     try {
-      const response = await signInWithEmailAndPassword(auth, email, password);
+      const response = await signInWithEmailAndPassword(
+        FIREBASE_AUTH,
+        email,
+        password
+      );
       console.log(response);
     } catch (error: any) {
       console.log(error);
       alert("Sign in failed: " + error.message);
     } finally {
-      setIsLoading(false);
+      setIsLoadingSubmit(false);
     }
   };
 
-  const signUp = async () => {
-    setIsLoading(true);
-
-    try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(response);
-      alert("Success. Check your emails.");
-    } catch (error: any) {
-      console.log(error);
-      alert("Registratio failed: " + error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+  if (isLoadingAuth) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
   return (
     <View className="flex-1 justify-center p-8 pb-20 gap-4 items-center">
       <Text className=" text-center text-2xl font-bold">
@@ -71,7 +72,7 @@ const Login = () => {
         secureTextEntry
       />
 
-      {isLoading ? (
+      {isLoadingSubmit ? (
         <ActivityIndicator size="large" />
       ) : (
         <View className="w-full">
@@ -85,16 +86,11 @@ const Login = () => {
             <Text className="text-white text-base font-medium ">Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={signUp}
+            onPress={() => navigation.navigate("SignUp")}
             className={`p-4 rounded-lg w-full justify-center items-center`}
-            disabled={!(email && password)}
           >
-            <Text
-              className={`${
-                !(email && password) ? " text-gray-500" : " text-blue-500"
-              } text-base font-medium `}
-            >
-              Create account
+            <Text className="text-blue-500 text-base">
+              Don't have an account? Create one!
             </Text>
           </TouchableOpacity>
         </View>
