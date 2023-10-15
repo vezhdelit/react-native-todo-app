@@ -10,14 +10,15 @@ const CreateTodo = () => {
     const user = FIREBASE_AUTH.currentUser;
     if (user) {
       const timestamp = new Date().toISOString(); // Create a timestamp
+      const newDoc = todo;
+      setTodo("");
 
       const doc = await addDoc(collection(FIRESTORE_DB, "todos"), {
-        title: todo,
+        title: newDoc,
         done: false,
         userId: user.uid, // Associate the to-do with the user
         createdAt: timestamp, // Include the timestamp in the todo document
       });
-      setTodo("");
     } else {
       alert("Error. Can't authenticate user");
     }
