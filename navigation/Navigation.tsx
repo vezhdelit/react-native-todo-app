@@ -7,21 +7,41 @@ import Home from "../app/screens/Home";
 import Login from "../app/screens/Login";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "../firebaseConfig";
+import SignUp from "../app/screens/SignUp";
 
-const SignedInStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
+const SignedInStack = createNativeStackNavigator();
+const SignedOutStack = createNativeStackNavigator();
 
 const SignedInLayout = () => {
   return (
     <SignedInStack.Navigator>
       <SignedInStack.Screen
-        name="My Todos"
+        name="Home"
         component={Home}
         options={{ headerShown: false }}
       />
     </SignedInStack.Navigator>
   );
 };
+
+const SignedOutLayout = () => {
+  return (
+    <SignedOutStack.Navigator>
+      <SignedOutStack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+      <SignedOutStack.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{ headerShown: false }}
+      />
+    </SignedOutStack.Navigator>
+  );
+};
+
 const Navigation = () => {
   const [user, setUser] = useState<User | null>(null);
 
@@ -36,14 +56,14 @@ const Navigation = () => {
       <Stack.Navigator initialRouteName="Login">
         {user ? (
           <Stack.Screen
-            name="SignedIn"
+            name="SignedInLayout"
             component={SignedInLayout}
             options={{ headerShown: false }}
           />
         ) : (
           <Stack.Screen
-            name="Login"
-            component={Login}
+            name="SignedOutLayout"
+            component={SignedOutLayout}
             options={{ headerShown: false }}
           />
         )}
