@@ -3,11 +3,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { StatusBar } from "react-native";
-import Home from "../app/screens/Home";
-import Login from "../app/screens/Login";
+import Home from "../screens/Home";
+import Login from "../screens/Login";
 import { User, onAuthStateChanged } from "firebase/auth";
-import { FIREBASE_AUTH } from "../firebaseConfig";
-import SignUp from "../app/screens/SignUp";
+import { FIREBASE_AUTH } from "../../firebaseConfig";
+import SignUp from "../screens/SignUp";
 
 const Stack = createNativeStackNavigator();
 const SignedInStack = createNativeStackNavigator();
