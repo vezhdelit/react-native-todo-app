@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import GoogleSignIn from "../components/ui/GoogleSignInButton";
 
 const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -37,6 +38,10 @@ const SignUp = ({ navigation }) => {
       <Text className=" text-center text-2xl font-bold">
         Create your account!
       </Text>
+      <View className="w-full">
+        <GoogleSignIn FIREBASE_AUTH={FIREBASE_AUTH} />
+      </View>
+      <Text className=" text-base text-gray-600"> or</Text>
       <TextInput
         className=" bg-white p-4 rounded-lg w-full"
         placeholder="Email.."

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "301594759884",
+    "project_id": "react-native-todolist-b8679",
+    "storage_bucket": "react-native-todolist-b8679.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301594759884:android:d061260d386ecadf92a869",
+        "android_client_info": {
+          "package_name": "com.vezhdelit.reactnativetodolist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301594759884-8o3vlppugtql2d5ojnia91fuo707jonr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vezhdelit.reactnativetodolist",
+            "certificate_hash": "00ebba8d36028b47420c701a831823281a83af60"
+          }
+        },
+        {
+          "client_id": "301594759884-nsgd4e1ll6eqf8olfqp7ee1a6ce7lps6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vezhdelit.reactnativetodolist",
+            "certificate_hash": "da7f1775360fbac9cb57c6fd61159dbc52e95432"
+          }
+        },
+        {
+          "client_id": "301594759884-rqfihvmjk8jho5tigiublekk6i4g932b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO61_2gKYXZSAZvfZ37Iq97u5Gi03nmLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301594759884-rqfihvmjk8jho5tigiublekk6i4g932b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,6 +12,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import GoogleSignIn from "../components/ui/GoogleSignInButton";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,6 @@ const Login = ({ navigation }) => {
 
   const signIn = async () => {
     setIsLoadingSubmit(true);
-
     try {
       const response = await signInWithEmailAndPassword(
         FIREBASE_AUTH,
@@ -54,47 +54,53 @@ const Login = ({ navigation }) => {
     );
   }
   return (
-    <View className="flex-1 justify-center p-8 pb-20 gap-4 items-center">
+    <View className="flex-1 justify-center p-8 pb-20 space-y-4 items-center">
       <Text className=" text-center text-2xl font-bold">
         Welcome to the TodoApp
       </Text>
-      <TextInput
-        className=" bg-white p-4 rounded-lg w-full"
-        placeholder="Email.."
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-      />
-      <TextInput
-        className=" bg-white p-4 rounded-lg w-full"
-        placeholder="Password.."
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry
-      />
+      <View className="w-full">
+        <GoogleSignIn FIREBASE_AUTH={FIREBASE_AUTH} />
+      </View>
+      <Text className=" text-base text-gray-600"> or</Text>
+      <View className="w-full space-y-4">
+        <TextInput
+          className=" bg-white p-4 rounded-lg w-full"
+          placeholder="Email.."
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <TextInput
+          className=" bg-white p-4 rounded-lg w-full"
+          placeholder="Password.."
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry
+        />
 
-      {isLoadingSubmit ? (
-        <ActivityIndicator size="large" />
-      ) : (
-        <View className="w-full">
-          <TouchableOpacity
-            onPress={signIn}
-            className={`${
-              !(email && password) ? " bg-gray-500" : " bg-blue-500"
-            }  p-4 rounded-lg w-full justify-center items-center`}
-            disabled={!(email && password)}
-          >
-            <Text className="text-white text-base font-medium ">Login</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("SignUp")}
-            className={`p-4 rounded-lg w-full justify-center items-center`}
-          >
-            <Text className="text-blue-500 text-base">
-              Don't have an account? Create one!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      )}
+        {isLoadingSubmit ? (
+          <ActivityIndicator size="large" />
+        ) : (
+          <View className="w-full">
+            <TouchableOpacity
+              onPress={signIn}
+              className={`${
+                !(email && password) ? " bg-gray-500" : " bg-blue-500"
+              }  p-4 rounded-lg w-full justify-center items-center`}
+              disabled={!(email && password)}
+            >
+              <Text className="text-white text-base font-medium ">Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("SignUp")}
+              className={`p-4 rounded-lg w-full justify-center items-center`}
+            >
+              <Text className="text-blue-500 text-base">
+                Don't have an account? Create one!
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </View>
   );
 };
