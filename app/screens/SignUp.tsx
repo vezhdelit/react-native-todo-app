@@ -9,11 +9,13 @@ import React, { useState } from "react";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import GoogleSignIn from "../components/ui/GoogleSignInButton";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState<Boolean>(false);
+  const [isPasswordHidden, setIsPasswordHidden] = useState<boolean>(true);
 
   const signUp = async () => {
     setIsLoading(true);
@@ -48,13 +50,24 @@ const SignUp = ({ navigation }) => {
         value={email}
         onChangeText={(text) => setEmail(text)}
       />
-      <TextInput
-        className=" bg-white p-4 rounded-lg w-full"
-        placeholder="Password.."
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry
-      />
+      <View className=" flex flex-row bg-white p-4 rounded-lg w-full justify-between items-center">
+        <TextInput
+          className=""
+          placeholder="Password.."
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={isPasswordHidden}
+        />
+        <TouchableOpacity
+          onPress={() => setIsPasswordHidden(!isPasswordHidden)}
+        >
+          <Ionicons
+            name={isPasswordHidden ? "ios-eye-off" : "ios-eye"}
+            size={24}
+            color="gray"
+          />
+        </TouchableOpacity>
+      </View>
 
       {isLoading ? (
         <ActivityIndicator size="large" />
