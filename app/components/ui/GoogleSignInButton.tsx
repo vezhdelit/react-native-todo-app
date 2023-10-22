@@ -22,14 +22,17 @@ const GoogleSignIn = ({ FIREBASE_AUTH }: GoogleSignInProps) => {
 
       // Get the users ID token
       const { idToken } = await GoogleSignin.signIn();
+
       // Create a Google credential with the token
       const googleCredential = GoogleAuthProvider.credential(idToken);
 
       const response = signInWithCredential(FIREBASE_AUTH, googleCredential);
       console.log(response);
+
+      // Makes sure that you can choose an account on every sign in
+      await GoogleSignin.revokeAccess();
     } catch (error: any) {
       console.log(error);
-      alert("Sign in failed: " + error.message);
     }
   };
 
