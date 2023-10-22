@@ -30,8 +30,9 @@ const CreateTodo = () => {
       className="flex flex-row gap-4"
     >
       <TextInput
-        className=" flex-1 p-4 rounded-lg bg-white text-base"
+        className=" flex-1 p-4 rounded-lg bg-white dark:bg-neutral-800 dark:text-neutral-400 text-base"
         // style={styles.input}
+        placeholderTextColor={"gray"}
         placeholder="Add new todo"
         value={todo}
         onChangeText={(text: string) => setTodo(text)}

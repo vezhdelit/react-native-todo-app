@@ -4,9 +4,14 @@ module.exports = {
     "./App.{js,jsx,ts,tsx}",
     "./app/components/**/*.{js,jsx,ts,tsx}",
     "./app/screens/**/*.{js,jsx,ts,tsx}",
+    "./app/navigation/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        midday: "#F2F2F2",
+      },
+    },
   },
   plugins: [],
 };

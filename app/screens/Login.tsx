@@ -50,30 +50,32 @@ const Login = ({ navigation }) => {
 
   if (isLoadingAuth) {
     return (
-      <View className="flex-1 justify-center items-center">
+      <View className="flex-1 justify-center items-center dark:bg-neutral-900">
         <ActivityIndicator size="large" />
       </View>
     );
   }
   return (
-    <View className="flex-1 justify-center p-8 pb-20 space-y-4 items-center">
-      <Text className=" text-center text-2xl font-bold">
+    <View className="flex-1 justify-center p-8 pb-20 space-y-4 items-center dark:bg-neutral-900">
+      <Text className=" text-center text-2xl font-bold dark:text-white">
         Welcome to the TodoApp
       </Text>
       <View className="w-full">
         <GoogleSignIn FIREBASE_AUTH={FIREBASE_AUTH} />
       </View>
-      <Text className=" text-base text-gray-600"> or</Text>
+      <Text className=" text-base text-gray-500"> or</Text>
       <View className="w-full space-y-4">
         <TextInput
-          className=" bg-white p-4 rounded-lg w-full"
+          className=" bg-white p-4 rounded-lg w-full dark:bg-neutral-800 dark:text-white"
+          placeholderTextColor={"gray"}
           placeholder="Email.."
           value={email}
           onChangeText={(text) => setEmail(text)}
         />
-        <View className=" flex flex-row bg-white p-4 rounded-lg w-full justify-between items-center">
+        <View className=" flex flex-row bg-white p-4 rounded-lg w-full justify-between items-center dark:bg-neutral-800">
           <TextInput
-            className=""
+            className="dark:text-white"
+            placeholderTextColor={"gray"}
             placeholder="Password.."
             value={password}
             onChangeText={(text) => setPassword(text)}
