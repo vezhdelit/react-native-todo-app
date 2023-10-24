@@ -2,9 +2,9 @@
 module.exports = {
   content: [
     "./App.{js,jsx,ts,tsx}",
-    "./app/components/**/*.{js,jsx,ts,tsx}",
-    "./app/screens/**/*.{js,jsx,ts,tsx}",
-    "./app/navigation/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+    "./src/screens/**/*.{js,jsx,ts,tsx}",
+    "./src/navigation/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
