@@ -2,6 +2,8 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { FIREBASE_AUTH, FIRESTORE_DB } from "../../firebaseConfig";
+import CustomButton from "./ui/button/CustomButton";
+import CustomInput from "./ui/input/CustomInput";
 
 const CreateTodo = () => {
   const [todo, setTodo] = useState("");
@@ -25,27 +27,21 @@ const CreateTodo = () => {
   };
 
   return (
-    <View
-      // style={styles.form}
-      className="flex flex-row gap-4"
-    >
-      <TextInput
-        className=" flex-1 p-4 rounded-lg bg-white dark:bg-neutral-800 dark:text-neutral-400 text-base"
-        // style={styles.input}
-        placeholderTextColor={"gray"}
-        placeholder="Add new todo"
+    <View className="flex flex-row items-center space-x-4">
+      <CustomInput
         value={todo}
-        onChangeText={(text: string) => setTodo(text)}
+        onChangeText={(text) => setTodo(text)}
+        containerClassname=" flex-1"
+        placeholderText="Add new todo"
       />
-      <TouchableOpacity
-        className={`${
-          todo === "" ? " bg-gray-500" : " bg-blue-500"
-        }  p-4 rounded-lg justify-center items-center`}
-        onPress={() => addTodo()}
-        disabled={todo === ""}
-      >
-        <Text className="text-white text-base font-medium ">Add Todo</Text>
-      </TouchableOpacity>
+      <View>
+        <CustomButton
+          containerClassname="p-[18px]"
+          title="Add Todo"
+          isDisabled={todo === ""}
+          onPress={() => addTodo()}
+        />
+      </View>
     </View>
   );
 };

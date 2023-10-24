@@ -5,7 +5,7 @@ import TodoList from "../components/TodoList";
 //TODO: Define proper types
 const Home = () => {
   return (
-    <SafeAreaView className="dark:bg-neutral-900 flex-1 p-4 ">
+    <SafeAreaView className="flex-1 p-4 dark:bg-neutral-900 ">
       <CreateTodo />
       <TodoList />
     </SafeAreaView>

@@ -8,15 +8,15 @@ const Profile = () => {
   const { colorScheme, toggleColorScheme } = useColorScheme();
 
   return (
-    <View className="flex-1 dark:bg-neutral-900 p-4">
+    <View className="flex-1 p-4 dark:bg-neutral-900">
       <View className=" items-end">
         <SignOutButton />
       </View>
-      <View className="flex-1 justify-center items-center space-y-8">
-        <View className="justify-center items-center space-y-2">
+      <View className="flex-1 items-center justify-center space-y-8">
+        <View className="items-center justify-center space-y-2">
           {user.photoURL && (
             <Image
-              className=" w-20 h-20 rounded-full"
+              className=" h-20 w-20 rounded-full"
               source={{ uri: user.photoURL }}
             />
           )}

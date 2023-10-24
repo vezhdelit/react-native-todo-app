@@ -53,7 +53,7 @@ const TodoList = () => {
 
   if (isLoading) {
     return (
-      <SafeAreaView className="flex-1 justify-center items-center">
+      <SafeAreaView className="flex-1 items-center justify-center">
         <ActivityIndicator size="large" />
       </SafeAreaView>
     );

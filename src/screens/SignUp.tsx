@@ -30,7 +30,7 @@ const SignUp = ({ navigation }) => {
     }
   };
   return (
-    <View className="flex-1 justify-center p-8 pb-20 gap-4 items-center dark:bg-neutral-900">
+    <View className="flex-1 items-center justify-center gap-4 p-8 pb-20 dark:bg-neutral-900">
       <Text className=" text-center text-2xl font-bold dark:text-white">
         Create your account!
       </Text>

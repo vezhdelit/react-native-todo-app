@@ -34,9 +34,9 @@ const TodoItem = ({ item }: any) => {
   };
 
   return (
-    <View className="flex flex-row  justify-between items-center p-4 rounded-lg bg-white dark:bg-neutral-800">
+    <View className="flex flex-row  items-center justify-between rounded-lg bg-white p-4 dark:bg-neutral-800">
       <TouchableOpacity
-        className="flex flex-row w-60 items-center gap-2"
+        className="flex w-60 flex-row items-center gap-2"
         onPress={toggleDone}
       >
         {item.done ? (
@@ -48,13 +48,13 @@ const TodoItem = ({ item }: any) => {
         {isEditing ? (
           <TextInput
             ref={textInputRef} // Reference to the TextInput component
-            className="text-base text-justify underline w-full dark:text-white"
+            className="w-full text-justify text-base underline dark:text-white"
             value={editedText}
             onChangeText={(text) => setEditedText(text)}
             multiline={true}
           />
         ) : (
-          <Text className="text-base text-justify dark:text-white">
+          <Text className="text-justify text-base dark:text-white">
             {item.title}
           </Text>
         )}

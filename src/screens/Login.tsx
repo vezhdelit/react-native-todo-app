@@ -44,13 +44,13 @@ const Login = ({ navigation }) => {
 
   if (isLoadingAuth) {
     return (
-      <View className="flex-1 justify-center items-center dark:bg-neutral-900">
+      <View className="flex-1 items-center justify-center dark:bg-neutral-900">
         <ActivityIndicator size="large" />
       </View>
     );
   }
   return (
-    <View className="flex-1 justify-center p-8 pb-20 space-y-4 items-center dark:bg-neutral-900">
+    <View className="flex-1 items-center justify-center space-y-4 p-8 pb-20 dark:bg-neutral-900">
       <Text className=" text-center text-2xl font-bold dark:text-white">
         Welcome to the TodoApp
       </Text>

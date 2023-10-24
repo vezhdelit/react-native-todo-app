@@ -20,9 +20,9 @@ const CustomButton = ({
       onPress={onPress}
       className={`${
         isDisabled ? " bg-gray-500" : " bg-blue-500"
-      } relative justify-center items-center rounded-lg p-4 ${containerClassname}`}
+      } relative items-center justify-center rounded-lg p-4 ${containerClassname}`}
     >
-      <Text className={`text-white text-base font-medium  ${textClassname}`}>
+      <Text className={`text-base font-medium text-white  ${textClassname}`}>
         {title}
       </Text>
     </TouchableOpacity>

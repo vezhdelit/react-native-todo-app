@@ -40,11 +40,11 @@ const GoogleSignIn = ({ FIREBASE_AUTH }: GoogleSignInProps) => {
     <View>
       <TouchableOpacity
         onPress={signInWithGoogle}
-        className="flex flex-row bg-red-600 p-4 rounded-lg w-full justify-center items-center space-x-2"
+        className="flex w-full flex-row items-center justify-center space-x-2 rounded-lg bg-red-600 p-4"
       >
         <Ionicons name="logo-google" size={24} color="white" />
 
-        <Text className="text-white text-base font-medium ">
+        <Text className="text-base font-medium text-white ">
           Sign in with Google
         </Text>
       </TouchableOpacity>

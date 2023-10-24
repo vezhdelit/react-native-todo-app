@@ -25,10 +25,10 @@ const CustomInput = ({
 
   return (
     <View
-      className={` flex flex-row bg-white p-4 rounded-lg justify-between items-center dark:bg-neutral-800 ${containerClassname}`}
+      className={` flex flex-row items-center justify-between rounded-lg bg-white p-4 dark:bg-neutral-800 ${containerClassname}`}
     >
       <TextInput
-        className={`dark:text-white flex-1 ${textClassname}`}
+        className={`flex-1 dark:text-white ${textClassname}`}
         placeholderTextColor={"gray"}
         placeholder={placeholderText}
         value={value}
