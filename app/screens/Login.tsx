@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  TextInput,
-  ActivityIndicator,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import { useEffect, useState } from "react";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
 import {
@@ -13,7 +7,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import GoogleSignIn from "../components/ui/button/GoogleSignInButton";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import CustomButton from "../components/ui/button/CustomButton";
+import CustomInput from "../components/ui/input/CustomInput";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -21,7 +16,6 @@ const Login = ({ navigation }) => {
   const [isLoadingSubmit, setIsLoadingSubmit] = useState<Boolean>(false);
   const [isLoadingAuth, setIsLoadingAuth] = useState<Boolean>(true);
   const [user, setUser] = useState<User | null>(null);
-  const [isPasswordHidden, setIsPasswordHidden] = useState<boolean>(true);
 
   useEffect(() => {
     setIsLoadingAuth(true);
@@ -60,59 +54,43 @@ const Login = ({ navigation }) => {
       <Text className=" text-center text-2xl font-bold dark:text-white">
         Welcome to the TodoApp
       </Text>
+
       <View className="w-full">
         <GoogleSignIn FIREBASE_AUTH={FIREBASE_AUTH} />
       </View>
       <Text className=" text-base text-gray-500"> or</Text>
       <View className="w-full space-y-4">
-        <TextInput
-          className=" bg-white p-4 rounded-lg w-full dark:bg-neutral-800 dark:text-white"
-          placeholderTextColor={"gray"}
-          placeholder="Email.."
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-        <View className=" flex flex-row bg-white p-4 rounded-lg w-full justify-between items-center dark:bg-neutral-800">
-          <TextInput
-            className="dark:text-white"
-            placeholderTextColor={"gray"}
-            placeholder="Password.."
+        <View>
+          <CustomInput
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            placeholderText="Email.."
+          />
+        </View>
+        <View>
+          <CustomInput
             value={password}
             onChangeText={(text) => setPassword(text)}
-            secureTextEntry={isPasswordHidden}
+            placeholderText="Password.."
+            isSecureTextEntry
+            isShowToggle
           />
-          <TouchableOpacity
-            onPress={() => setIsPasswordHidden(!isPasswordHidden)}
-          >
-            <Ionicons
-              name={isPasswordHidden ? "ios-eye-off" : "ios-eye"}
-              size={24}
-              color="gray"
-            />
-          </TouchableOpacity>
         </View>
-
         {isLoadingSubmit ? (
           <ActivityIndicator size="large" />
         ) : (
           <View className="w-full">
-            <TouchableOpacity
+            <CustomButton
+              title="Login"
+              isDisabled={!(email && password)}
               onPress={signIn}
-              className={`${
-                !(email && password) ? " bg-gray-500" : " bg-blue-500"
-              }  p-4 rounded-lg w-full justify-center items-center`}
-              disabled={!(email && password)}
-            >
-              <Text className="text-white text-base font-medium ">Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            />
+            <CustomButton
+              containerClassname=" bg-transparent"
+              textClassname=" text-blue-500 font-normal"
               onPress={() => navigation.navigate("SignUp")}
-              className={`p-4 rounded-lg w-full justify-center items-center`}
-            >
-              <Text className="text-blue-500 text-base">
-                Don't have an account? Create one!
-              </Text>
-            </TouchableOpacity>
+              title="Don't have an account? Create one!"
+            />
           </View>
         )}
       </View>
