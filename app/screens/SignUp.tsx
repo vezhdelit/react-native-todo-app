@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import GoogleSignIn from "../components/ui/GoogleSignInButton";
+import GoogleSignIn from "../components/ui/button/GoogleSignInButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const SignUp = ({ navigation }) => {

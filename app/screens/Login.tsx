@@ -12,7 +12,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import GoogleSignIn from "../components/ui/GoogleSignInButton";
+import GoogleSignIn from "../components/ui/button/GoogleSignInButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Login = ({ navigation }) => {

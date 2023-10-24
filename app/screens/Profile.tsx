@@ -1,27 +1,17 @@
-import { View, Text, Image, Switch, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, Image, Switch } from "react-native";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
 import { useColorScheme } from "nativewind";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import SignOutButton from "../components/ui/button/SignOutButton";
 
 const Profile = () => {
   const user = FIREBASE_AUTH.currentUser;
   const { colorScheme, toggleColorScheme } = useColorScheme();
 
-  const handleSignOut = async () => {
-    try {
-      await FIREBASE_AUTH.signOut();
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    }
-  };
-
   return (
     <View className="flex-1 dark:bg-neutral-900 p-4">
-      <TouchableOpacity className=" w-8 ml-auto" onPress={handleSignOut}>
-        <Ionicons name="log-out" size={32} color="#f44336" />
-      </TouchableOpacity>
+      <View className=" items-end">
+        <SignOutButton />
+      </View>
       <View className="flex-1 justify-center items-center space-y-8">
         <View className="justify-center items-center space-y-2">
           {user.photoURL && (
